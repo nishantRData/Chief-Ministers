@@ -1,7 +1,6 @@
 # Ignore all data files
 *.xlsx
 *.xls
-*.csv
 *.rds
 *.RData
 *.rda

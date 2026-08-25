@@ -150,15 +150,27 @@ system(paste(
 
 #####Longest Serving CMS####
 
-longest_serving<-CM_ALL%>%group_by(cm)%>%
-  summarise(Days=sum(Days))%>%mutate(Rank=dense_rank(desc(Days)))%>%
-  filter(Rank%in%c(1:10))
+longest_serving <- CM_ALL %>%
+  group_by(cm) %>%
+  summarise(
+    Days = sum(Days),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    Rank = dense_rank(desc(Days))
+  ) %>%
+  filter(Rank %in% 1:10) %>%
+  arrange(Rank)
 
 write.csv(
   longest_serving,
   "tables/ten_longest_serving_cms_india.csv",
-  row.names = FALSE)
+  row.names = FALSE
+)
 
+
+list.files("tables")
+file.exists("tables/ten_longest_serving_cms_india.csv")
 
 
 
