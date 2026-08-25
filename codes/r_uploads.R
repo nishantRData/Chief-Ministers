@@ -176,8 +176,20 @@ partywise_CMs<-CM_ALL%>%group_by(party)%>%
 write.csv(
   partywise_CMs,
   "tables/partywise_number_of_CMs.csv",
-  row.names = FALSE
-)
+  row.names = FALSE)
+
+###Number of Female Chief Ministers in India####
+
+female_cms<-CM_ALL%>%filter(Gender=="F")%>%
+select(cm,State,From,To,party,Caste,Category)
+
+write.csv(female_cms,
+    "tables/genderwise_number_of_CMs.csv",
+    row.names = FALSE)
+  
+
+  
+  
 
 
 
