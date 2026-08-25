@@ -149,7 +149,6 @@ system(paste(
 ###Basic Facts about Chief Ministers
 
 #####Longest Serving CMS####
-
 longest_serving <- CM_ALL %>%
   group_by(cm) %>%
   summarise(
@@ -169,18 +168,16 @@ write.csv(
 )
 
 
-list.files("tables")
-file.exists("tables/ten_longest_serving_cms_india.csv")
+###Number of Partywise CMs
 
+partywise_CMs<-CM_ALL%>%group_by(party)%>%
+  summarise(`Number of CMs`=n())%>%ungroup()
 
-
-
-
-
-
-
-
-
+write.csv(
+  partywise_CMs,
+  "tables/partywise_number_of_CMs.csv",
+  row.names = FALSE
+)
 
 
 
