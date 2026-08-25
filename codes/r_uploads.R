@@ -76,6 +76,78 @@ system(paste(
   'commit -m "Merge latest changes from GitHub"'
 ))
 
+system(paste(git, "status"))
+
+
+# Add the modified R script
+system(paste(git, "add codes/r_uploads.R"))
+
+# Check what will be committed
+system(paste(git, "status"))
+
+# Commit it
+system(paste(
+  git,
+  'commit -m "Update public analysis script"'
+))
+
+# Check status again
+system(paste(git, "status"))
+
+
+
+system(paste(git, "fetch origin"))
+system(paste(git, "status"))
+
+
+
+# ============================================================
+# FINAL CHECK AND PUSH TO GITHUB
+# ============================================================
+
+# Show whether local main differs from GitHub's main
+system(paste(git, "status -sb"))
+
+# Show commits that are local and not yet on GitHub
+system(paste(git, "log origin/main..main --oneline"))
+
+# Show files in the latest commits
+system(paste(git, "status"))
+
+# If everything looks correct, push to GitHub
+system(paste(git, "push -u origin main"))
+
+# Final verification
+system(paste(git, "status -sb"))
+
+
+
+
+# Go to your project
+setwd("C:/Users/210185/Downloads/india_cms_analysis")
+
+# Git location
+git <- '"C:/Program Files/Git/cmd/git.exe"'
+
+# 1. Count lines in the file currently SAVED on your computer
+length(readLines("codes/r_uploads.R"))
+
+# 2. Check whether the local file has changes not yet uploaded
+system(paste(git, "status"))
+
+# 3. See exactly what Git thinks has changed
+system(paste(git, "diff -- codes/r_uploads.R"))
+
+# 4. Check the number of lines in the version currently committed
+system(paste(
+  git,
+  'show HEAD:codes/r_uploads.R | find /v /c ""'
+))
+
+
+
+
+
 
 
 
