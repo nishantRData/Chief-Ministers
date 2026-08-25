@@ -187,6 +187,16 @@ write.csv(female_cms,
     "tables/genderwise_number_of_CMs.csv",
     row.names = FALSE)
   
+###Maximum times a CM took oath
+
+oath<-CM_ALL%>%ungroup()%>%group_by(cm)%>%summarise(Number_of_terms=n())%>%
+  ungroup()%>%mutate(Rank=dense_rank(desc(Number_of_terms)))
+
+
+write.csv(
+  oath,
+  "tables/number_of_tems.csv",
+  row.names = FALSE)
 
   
   
