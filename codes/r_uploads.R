@@ -1,6 +1,7 @@
 library(readxl)
 library(dplyr)
 library(tidyverse)
+library(kableExtra)
 
 # Read the private dataset
 
@@ -143,6 +144,23 @@ system(paste(
   git,
   'show HEAD:codes/r_uploads.R | find /v /c ""'
 ))
+
+
+###Basic Facts about Chief Ministers
+
+#####Longest Serving CMS####
+
+longest_serving<-CM_ALL%>%group_by(cm)%>%
+  summarise(Days=sum(Days))%>%mutate(Rank=dense_rank(desc(Days)))%>%
+  filter(Rank%in%c(1:10))
+
+
+
+
+
+
+
+
 
 
 
