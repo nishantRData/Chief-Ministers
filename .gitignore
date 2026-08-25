@@ -1,0 +1,19 @@
+# Ignore all data files
+*.xlsx
+*.xls
+*.csv
+*.rds
+*.RData
+*.rda
+
+# Ignore data folders
+data/
+
+# RStudio temporary files
+.Rhistory
+.RData
+.Ruserdata
+
+# Operating system files
+.DS_Store
+Thumbs.db
