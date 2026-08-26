@@ -162,6 +162,15 @@ write.csv(oldest_cms,
   row.names = FALSE)
 
 
+##Castewise List of CMs
+
+caste<-CM_ALL%>%ungroup()%>%group_by(Caste)%>%summarise(Number_of_CMs=n())%>%
+  arrange(desc(Number_of_CMs))
+
+
+write.csv(caste,
+          "tables/Castewise_number_CMs.csv",
+          row.names = FALSE)
 
 
 
