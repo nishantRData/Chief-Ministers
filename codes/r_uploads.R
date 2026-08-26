@@ -1,4 +1,4 @@
-
+# ============================================================
 # CHIEF MINISTERS OF INDIA: ANALYSIS
 # ============================================================
 
@@ -126,21 +126,27 @@ write.csv(
   row.names = FALSE
 )
 
-  
-##Median age across decades
 
-age<-CM_ALL%>%group_by(decades)%>%
-  summarise(Median_age=median(age_appointment,na.rm = TRUE),
-            Mean_age=mean(age_appointment,na.rm=TRUE))
+# ============================================================
+# 5. AGE AT APPOINTMENT
+# ============================================================
 
+
+# ------------------------------------------------------------
+# Table 5: Median and mean age at appointment across decades
+# ------------------------------------------------------------
+
+age <- CM_ALL %>%
+  group_by(decades) %>%
+  summarise(
+    Median_age = median(age_appointment, na.rm = TRUE),
+    Mean_age = mean(age_appointment, na.rm = TRUE),
+    .groups = "drop"
+  )
 
 write.csv(
   age,
   "tables/medianMean_appointment_age.csv",
   row.names = FALSE
 )
-
-
-
-
 
