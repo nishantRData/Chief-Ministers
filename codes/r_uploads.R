@@ -150,3 +150,19 @@ write.csv(
   row.names = FALSE
 )
 
+###Ten oldest CMs at the time of retirement
+
+oldest_cms<-CM_ALL%>%ungroup()%>%
+mutate(Rank=dense_rank(desc(age_retirement)))%>%filter(Rank%in%c(1:20))%>%
+  select(cm,State,From,To,age_appointment)%>%arrange(age_appointment)
+
+
+write.csv(oldest_cms,
+  "tables/Oldest_20_CMs_age.csv",
+  row.names = FALSE)
+
+
+
+
+
+
